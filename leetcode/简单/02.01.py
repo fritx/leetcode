@@ -23,7 +23,7 @@
 #         self.val = x
 #         self.next = None
 
-# 3。 官方解 - 方法二：两重循环
+# 2. 官方解 - 方法二：两重循环
 class Solution:
     def removeDuplicateNodes(self, head: ListNode) -> ListNode:
         ob = head
@@ -54,19 +54,4 @@ class Solution:
                 pos = pos.next
             else:
                 pos.next = pos.next.next
-        return head
-
-
-# 1. 自解 - 哈希表
-# [1, 2, 3, 3, 2, 1]
-# [1,2,3]
-# 执行用时： 88 ms, 在所有 Python3 提交中击败了 64.62 % 的用户
-# 内存消耗： 19.6 MB, 在所有 Python3 提交中击败了 100.00 % 的用户
-class Solution:
-    def removeDuplicateNodes(self, head: ListNode) -> ListNode:
-        curr = head
-        while curr:
-            if curr.next and curr.next.val == head.val:
-                curr.next = curr.next.next
-            curr = curr.next
         return head
