@@ -1,4 +1,4 @@
-# 23. 合并K个排序链表 - 苦难
+# 23. 合并K个排序链表 - 困难
 # https://leetcode-cn.com/problems/merge-k-sorted-lists/
 # https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/
 
