@@ -1,5 +1,6 @@
 // 103. 二叉树的锯齿形层次遍历 - 中等
 // https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/
+// https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/solution/er-cha-shu-de-ju-chi-xing-ceng-ci-bian-li-by-leetc/
 
 // 模拟数组的unshift等操作 - [译]Go Slice 秘籍
 // https://colobu.com/2017/03/22/Slice-Tricks/
@@ -20,6 +21,28 @@
 // 2. 方法二：DFS （深度优先遍历）
 // 时间复杂度：O(N)，其中 N 是树中节点的数量。
 // 空间复杂度：O(H)=O(logN)，其中 H 是树的高度。
+// 执行用时： 0 ms , 在所有 Go 提交中击败了 100.00% 的用户
+// 内存消耗： 2.8 MB , 在所有 Go 提交中击败了 33.33% 的用户
+func zigzagLevelOrder(root *TreeNode) [][]int {
+    ans := [][]int{}
+    dfs(root, 0, &ans)
+    return ans
+}
+func dfs(root *TreeNode, level int, ans *[][]int) {
+    if root == nil {
+        return
+    }
+    if level == len(*ans) {  // 创建每一层的数组
+        *ans = append(*ans, []int{})
+    }
+    if level % 2 == 0 {  // 左->右
+        (*ans)[level] = append((*ans)[level], root.Val)  // push
+    } else {    // 右->左
+        (*ans)[level] = append([]int{root.Val}, (*ans)[level]...)  // unshift
+    }
+    dfs(root.Left, level + 1, ans)
+    dfs(root.Right, level + 1, ans)
+}
 
 
 // 1. 方法一：BFS（广度优先遍历）
